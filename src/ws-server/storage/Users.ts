@@ -21,9 +21,7 @@ export class Users {
     getAllWinners = (): Winner[] => {
         const winners: Winner[] = [];
         this.users.forEach((user: User) => {
-            if (user.score > 0) {
-                winners.push({name: user.name, wins: user.score});
-            }
+            winners.push({name: user.name, wins: user.score});
         });
 
         winners.sort((a, b) => {
