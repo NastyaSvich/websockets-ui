@@ -1,0 +1,16 @@
+export enum MessageType {
+    EMPTY = 'empty',
+    REG_OUT = 'regOut',
+    REG = 'reg',
+    CREATE_ROOM = 'create_room',
+    ADD_USER_TO_ROOM = 'add_user_to_room',
+    ADD_SHIPS = 'add_ships',
+    ATTACK = 'attack',
+    RANDOM_ATTACK = 'randomAttack',
+    UPDATE_WINNERS = 'update_winners',
+    CREATE_GAME = 'create_game',
+    UPDATE_ROOM = 'update_room',
+    START_GAME = 'start_game',
+    TURN = 'turn',
+    FINISH = 'finish',
+}
