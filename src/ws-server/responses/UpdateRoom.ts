@@ -2,9 +2,12 @@ import {Message} from "../models/Message";
 import {MessageType} from "../models/MessageType";
 import {serializeMessage} from "../utils/ParseMessage";
 import {Storage} from "../storage/Storage";
-import {ExtendedWebSocket} from "../models/ExtendedWebSocket";
+import {Server} from "ws";
 
-export const updateRoom = (storage: Storage, socket: ExtendedWebSocket) => {
+export const updateRoom = (
+    storage: Storage,
+    server: Server
+) => {
     const data = storage.rooms.getAvailableRooms();
 
     const response: Message<object> = {
@@ -13,5 +16,9 @@ export const updateRoom = (storage: Storage, socket: ExtendedWebSocket) => {
         id: 0
     };
 
-    socket.send(serializeMessage(response));
+    server.clients.forEach((socket) => {
+        if (socket.readyState === WebSocket.OPEN) {
+            socket.send(serializeMessage(response));
+        }
+    });
 };

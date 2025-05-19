@@ -1,15 +1,15 @@
 import {Users} from "./Users";
 import {Rooms} from "./Rooms";
-import {Games} from "./Games";
+import {Game} from "./Game";
 
 export type Storage = {
     users: Users;
     rooms: Rooms;
-    games: Games;
+    game: Game;
 };
 
 export const storage: Storage = {
     users: new Users(),
     rooms: new Rooms(),
-    games: new Games(),
+    game: new Game(),
 };

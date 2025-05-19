@@ -23,13 +23,13 @@ export class Rooms {
         return result;
     };
 
-    addUserToRoom = (roomId: string, user: Pick<User, "index" | "name">): void => {
-        const result = this.getRoomById(roomId);
-        if (result) {
-            result.roomUsers.push(user);
+    addUserToRoom = (roomId: string, user: Pick<User, "index" | "name">) => {
+        const room = this.getRoomById(roomId);
+        if (room) {
+            room.roomUsers.push(user);
         }
 
-        return;
+        return room;
     };
 
     getRoomById = (id: string): Room | undefined => {

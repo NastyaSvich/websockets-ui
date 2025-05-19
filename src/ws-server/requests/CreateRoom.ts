@@ -1,8 +1,14 @@
 import {Storage} from "../storage/Storage";
 import {updateRoom} from "../responses/UpdateRoom";
 import {ExtendedWebSocket} from "../models/ExtendedWebSocket";
+import {Server} from "ws";
 
-export const createRoom = (_data: unknown, storage: Storage, socket: ExtendedWebSocket): void => {
+export const createRoom = (
+    _data: unknown,
+    storage: Storage,
+    socket: ExtendedWebSocket,
+    server: Server
+): void => {
     const room = storage.rooms.createRoom();
     const user = storage.users.getByIndex(socket.userIndex!)
 
@@ -10,5 +16,5 @@ export const createRoom = (_data: unknown, storage: Storage, socket: ExtendedWeb
         storage.rooms.addUserToRoom(room.roomId, {index: user.index, name: user.name});
     }
 
-    updateRoom(storage, socket);
+    updateRoom(storage, server);
 };
